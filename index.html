@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./assets/styles/css/all.min.css">
+        <link rel="stylesheet" href="./assets/styles/css/style.css">
+        <title>Calendar App</title>
+    </head>
+    <body>
+        <header>Calendar</header>
+        <main>
+            <section id="calendarWrapper">
+                <div class="nav">
+                    <button id="prev">
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    </button>
+                    <span id="month-year"></span>
+                    <button id="next">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div class="days"></div>
+                <div class="calendar"></div>
+            </section>
+        </main>
+        <footer>
+            By tëçħ_wřäįŧħ🏴‍☠️
+        </footer>
+        <div class="pop-wrapper">
+            <div class="pop-up">
+                <button id="closePop">
+                    <!-- <i class="fa fa-times" aria-hidden="true"></i> -->
+                    x
+                </button>
+                <h3>Which year and month do you want to go to?</h3>
+                <div class="error"></div>
+                <div class="inputs">
+                    <input type="text" id="yearInp" placeholder="Year">
+                    <input type="number" id="monthInp" placeholder="Month" pattern="[0-9]*">
+                </div>
+                <button type="button" id="goToDate">GO</button>
+            </div>
+        </div>
+        <script src="./assets/scripts/all.min.js"></script>
+        <script src="./assets/scripts/jquery.js"></script>
+        <script src="./assets/scripts/script.js"></script>
+    </body>
+</html>

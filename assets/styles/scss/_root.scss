@@ -1,0 +1,33 @@
+@use "./var" as *;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+html {
+    color-scheme: dark;
+}
+button {
+    border: none;
+    padding: calc($pad * 1.4);
+    color: $primaryColor;
+    cursor: pointer;
+    background: none;
+    &:hover{
+        background: #171718;
+        color: $primaryColorVariant;
+        @extend %transition
+    }
+}
+body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    main {
+        display: grid;
+        place-items: center;
+    }
+}

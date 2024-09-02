@@ -1,0 +1,185 @@
+@use "./var" as *;
+@use "./root" as *;
+header {
+    padding: $pad;
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 100;
+    letter-spacing: 3px;
+    background: #000;
+    text-shadow: 1px 1px 5px #ff2200de;
+}
+footer {
+    text-align: center;
+    color: #c4c4c4bd;
+    background: #000;
+    padding: calc($pad / 2);
+}
+#calendarWrapper {
+    width: 100%;
+    max-width: 28rem;
+    height: fit-content;
+    box-shadow: 0 0 0.4rem 0.1rem #3d525131;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: #000;
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 0.05rem solid $primaryColorVariant;
+        span {
+            letter-spacing: 4px;
+        }
+        #month-year {
+            cursor: pointer;
+        }
+    }
+    .days {
+        display: flex;
+        justify-content: space-between;
+        margin-block: 0.5rem;
+        span {
+            padding: 0.3rem 0.7rem;
+            background: $primaryColorVariant;
+            letter-spacing: 3px;
+            width: 100%;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            @media screen and (max-width: 480px) {
+                letter-spacing: 1px;
+            }
+        }
+    }
+    .calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        place-items: center;
+        .day {
+            display: grid;
+            cursor: pointer;
+            place-items: center;
+            padding: 1rem 1.2rem;
+            width: 100%;
+            height: 100%;
+            @extend %transition;
+            border: 0.003rem solid #ffffff2d;
+            letter-spacing: 3px;
+            &.bordered {
+                border: 0.04rem groove grey;
+                background: $primaryColorVariant;
+            }
+            &.empty {
+                border: none;
+                background: none;
+                &:hover {
+                    border: none;
+                    background: none;
+                }
+            }
+            &:hover {
+                border: 0.04rem groove grey;
+                background: $primaryColorVariant;
+            }
+            @media screen and (max-width: 480px) {
+                letter-spacing: 1px;
+                padding: 0.7rem;
+            }
+        }
+    }
+}
+.pop-wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    place-items: center;
+    background: #000000aa;
+    display: none;
+    &.show {
+        display: grid;
+        .pop-up {
+            animation: slideUp 0.8s;
+        }
+    }
+    @keyframes slideUp {
+        from {
+            transform: translateY(10%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+    .pop-up {
+        width: 95%;
+        max-width: 30rem;
+        padding: 1.5rem 1rem;
+        background: #000;
+        border-radius: 0.5rem;
+        position: relative;
+        display: grid;
+        box-shadow: 0 0 0.4rem 0.01rem #cfcca225;
+        h3 {
+            margin-bottom: 1rem;
+        }
+        button {
+            place-self: end;
+            background: #01252e;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 0.2rem;
+            @extend %transition;
+            font-size: 1rem;
+            &:hover {
+                background: #024a5c;
+            }
+            &#closePop{
+                background: none;
+                padding: 0;
+                color: red;
+                position: absolute;
+                top: 0.5rem;
+                right: 0.5rem;
+                font-size: 1.5rem;
+            }
+        }
+        .error{
+            display: none;
+            padding: .5rem;
+            background: #be0a04;
+            color: #fff;
+            margin-bottom: .5rem;
+            @keyframes fadeIn {
+                from {
+                    opacity: .5;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            &.show{
+                display: block;
+                animation: fadeIn 1s;
+            }
+        }
+        .inputs {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            input {
+                width: 45%;
+                height: 2.5rem;
+                background: none;
+                border: none;
+                border-bottom: 0.01rem solid #fdfdfdcb;
+                outline: none;
+                font-size: 1.2rem;
+                padding-left: 0.2rem;
+                &:focus {
+                    border: 1px solid #fdfdfdcb;
+                }
+            }
+        }
+    }
+}
